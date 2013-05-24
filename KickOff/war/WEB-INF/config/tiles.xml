@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="baseLayout" template="/WEB-INF/pages/layout/layout.jsp">
+		<put-attribute name="title" value="FrameWork" />
+		<put-attribute name="header" value="/WEB-INF/pages/layout/header.jsp" />
+		<put-attribute name="menu" value="/WEB-INF/pages/layout/menu.jsp" />
+		<put-attribute name="body" value="" />
+		<put-attribute name="footer" value="/WEB-INF/pages/layout/footer.jsp" />
+	</definition>
+ 
+ 	<definition name="loginform" extends="baseLayout">
+ 		<put-attribute name="title" value="Sign in" />
+		<put-attribute name="body" value="/WEB-INF/pages/login/loginPage.jsp" />
+	</definition>
+	 
+	<definition name="logout" extends="baseLayout">
+		<put-attribute name="title" value="Log out" />
+		<put-attribute name="body" value="/WEB-INF/pages/login/loginForm.jsp" />
+	</definition>
+	
+	<definition name="sessionExpired" extends="baseLayout">
+		<put-attribute name="title" value="Session Expired" />
+		<put-attribute name="body" value="/WEB-INF/pages/login/sessionExpired.jsp" />
+	</definition>
+	
+	<definition name="user" extends="baseLayout">
+		<put-attribute name="title" value="User" /> 
+		<put-attribute name="body" value="/WEB-INF/pages/user/user.jsp" />
+ 	</definition> 
+ 	
+ 	<definition name="usersList" extends="baseLayout">  
+		<put-attribute name="title" value="UsersList" /> 
+		<put-attribute name="body" value="/WEB-INF/pages/user/usersList.jsp" />
+ 	</definition> 
+	
+	<definition name="createUserPage" extends="baseLayout">  
+		<put-attribute name="title" value="CreateUser " /> 
+		<put-attribute name="body" value="/WEB-INF/pages/user/createUserPage.jsp" />
+ 	</definition> 
+ 
+	<definition name="myAccount" extends="baseLayout">
+		<put-attribute name="title" value="My Account" />
+		<put-attribute name="body" value="/WEB-INF/pages/login/myAccount.jsp" />
+	</definition>
+	
+	<definition name="accessDenied" extends="baseLayout">
+		<put-attribute name="title" value="Access denied" />
+		<put-attribute name="body" value="/WEB-INF/pages/login/accessDenied.jsp" />
+	</definition> 
+   
+  <definition name="forgotpassword" extends="baseLayout">
+	 <put-attribute name="title" value="Forgot Password" />
+	 <put-attribute name="body" value="/WEB-INF/pages/login/forgotPassword.jsp" />
+  </definition>
+   
+  <definition name="roleList" extends="baseLayout">  
+		<put-attribute name="title" value="Role List" /> 
+		<put-attribute name="body" value="/WEB-INF/pages/role/roleList.jsp" />
+  </definition> 
+ 	
+  <definition name="createRolePage" extends="baseLayout">  
+		<put-attribute name="title" value="Create Role" /> 
+		<put-attribute name="body" value="/WEB-INF/pages/role/createRolePage.jsp" />
+  </definition>
+  
+  <definition name="clientsList" extends="baseLayout">  
+		<put-attribute name="title" value="Client List" /> 
+		<put-attribute name="body" value="/WEB-INF/pages/clients/clientList.jsp" />
+  </definition>
+  
+  <definition name="createClient" extends="baseLayout">  
+		<put-attribute name="title" value="New Client" /> 
+		<put-attribute name="body" value="/WEB-INF/pages/clients/createClient.jsp" />
+  </definition>
+  
+  <definition name="logoImageUpload" template="/WEB-INF/pages/clients/logoImageUpload.jsp"></definition>
+ 
+</tiles-definitions>

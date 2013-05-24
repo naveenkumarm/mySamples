@@ -1,0 +1,14 @@
+<!--
+
+    Context configuration file for the Tomcat Manager Web App
+
+    $Id: manager.xml,v 1.3 2004/08/26 17:03:34 remm Exp $
+
+-->
+
+<!-- docbase should point to your src folder.Change it according
+	to your source directory
+-->
+
+<Context docBase="E:\Bank Application workspace from Mar'05\FrameWork\war" privileged="true"></Context>
+ 

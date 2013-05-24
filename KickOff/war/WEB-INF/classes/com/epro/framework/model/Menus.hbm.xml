@@ -1,0 +1,30 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 19, 2012 1:09:59 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="com.epro.framework.model.Menus" table="Menus" schema="dbo" >
+        <id name="menuId" type="long">
+            <column name="MenuId" />
+            <generator class="identity" />
+        </id>
+         <property name="menuName" type="string">
+            <column name="MenuName" length="50" not-null="true" />
+        </property>
+         <property name="menuDescription" type="string">
+            <column name="MenuDescription" length="150"  />
+        </property>
+        <property name="modifiedDate" type="timestamp">
+            <column name="ModifiedDate" length="23" not-null="true" />
+        </property>
+        <property name="orderId" type="int">
+            <column name="OrderId" not-null="true" />
+        </property>        
+        <set name="subMenuses" lazy="false" table="SubMenus" fetch="select">
+            <key>
+                <column name="MenuId" not-null="true" />
+            </key>
+            <one-to-many class="com.epro.framework.model.SubMenus" />
+        </set> 
+     </class>
+</hibernate-mapping>

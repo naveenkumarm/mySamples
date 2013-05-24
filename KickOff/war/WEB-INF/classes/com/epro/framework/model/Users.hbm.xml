@@ -1,0 +1,89 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 Oct, 2012 11:47:06 AM by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="com.epro.framework.model.Users" table="Users" schema="dbo">
+        <id name="userId" type="int">
+            <column name="UserId" />
+            <generator class="identity" />
+        </id>
+        
+         <property name="firstName" type="string">
+            <column name="FirstName" length="30" not-null="true" />
+        </property>
+        
+		<property name="lastName" type="string">
+            <column name="LastName" length="30" not-null="true" />
+        </property>
+        
+          <many-to-one name="roles" lazy="false" class="com.epro.framework.model.Roles" fetch="select">
+            <column name="RoleId" not-null="true" />
+        </many-to-one>
+        
+        <property name="employeeId" type="string">
+            <column name="EmployeeId" length="10" not-null="true" />
+        </property>
+        
+         <property name="department" type="string">
+            <column name="Department" length="50" not-null="true" />
+        </property>
+        
+        <property name="userName" type="string">
+            <column name="UserName" length="50" not-null="true" />
+        </property>
+        
+		<property name="password" type="string">
+            <column name="Password" length="50" not-null="true"/>
+        </property>	
+        	 
+        <property name="workingPhone1" type="string">
+            <column name="WorkingPhone1" length="20" not-null="true" />
+        </property>
+        
+		<property name="workingPhone2" type="string">
+            <column name="WorkingPhone2" length="20"/>
+        </property>
+        
+		<property name="extn1" type="string">
+            <column name="Extn1" length="6"/>
+        </property>
+        
+        <property name="extn2" type="string">
+            <column name="Extn2" length="6"/>
+        </property>
+        
+        <property name="mobileNumber1" type="string">
+            <column name="MobileNumber1" length="20" not-null="true" />
+        </property>
+        
+		<property name="mobileNumber2" type="string">
+            <column name="MobileNumber2" length="20"/>
+        </property>
+        
+         <property name="emailId" type="string">
+            <column name="EmailId"  length="50" not-null="true" />
+        </property>
+        
+		<property name="status" type="boolean">
+            <column name="Status"  not-null="true" />
+        </property>
+        
+		<property name="modifiedTime" type="timestamp">
+            <column name="ModifiedTime"  not-null="true"/>
+        </property>
+        
+        <property name="isDeleted" type="boolean">
+            <column name="IsDeleted"  not-null="true"/>
+        </property>
+        
+      	<property name="isAdmin" type="boolean">
+            <column name="IsAdmin"  not-null="true"/>
+        </property>
+        
+      	<many-to-one name="clients" lazy="false" class="com.epro.framework.model.Clients" fetch="select">
+            <column name="ClientId" not-null="true" />
+        </many-to-one>
+        
+  </class>
+</hibernate-mapping>

@@ -1,0 +1,482 @@
+ 
+.detailsPane {
+	position: relative;
+	top: -18px;
+	color: #3958A7;
+	font-weight: bold;
+	left: -5px;
+}
+
+.utilityTrackerImage {
+	float: right;
+}
+
+.customSelect {
+	border-color: #dcdcdd;
+	border-style: solid;
+	border-width: thin;
+	padding: 3px;
+	font-family: tahoma, Arial, Helvetica, sans-serif;
+	color: #111111;
+	font-size: .9em;
+	margin-top: 5px;
+	margin-bottom: 10px;
+}
+
+.customLabel {
+	color: #000;
+	display: block;
+	font-family: tahoma, Arial, Helvetica, sans-serif;
+	font-size: .99em;
+	font-weight: normal;
+	margin-left: 0px;
+	margin-right: 7px;
+	margin-bottom: 5px;
+	text-align: right;
+	width: 100px;
+	padding-top: 0px;
+}
+
+.customInput {
+	border-color: #dcdcdd;
+	border-style: solid;
+	border-width: thin;
+	padding: 3px;
+	color: #111111;
+	font-family: tahoma, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin-top: 1px;
+	margin-bottom: 10px;
+}
+
+.customLabelExtn {
+	color: #000;
+	display: block;
+	font-family: tahoma, Arial, Helvetica, sans-serif;
+	font-size: .99em;
+	font-weight: normal;
+	text-align: left;
+	width: 38px;
+	padding-top: 0px;
+}
+
+.errorField {
+	margin-left: 30px;
+	font-family: tahoma, Arial, Helvetica, sans-serif;
+	color: red;
+	font-size: 13px;
+}
+
+.mandatory {
+	color: #FF0000;
+	font-weight: bold;
+	font-size: 13px;
+}
+
+.dynamicCheckbox {
+	float: left;
+	margin: 7px 6px 7px 40px;
+}
+
+.tablelabel {
+	color: #000;
+	display: block;
+	font-family: tahoma, Arial, Helvetica, sans-serif;
+	font-size: .998em;
+	font-weight: normal;
+	margin-left: 8px;
+	margin-right: 7px;
+	margin-bottom: 5px;
+	text-align: left;
+	padding-top: 0px;
+	margin-top: 6px;
+}
+
+#accessPermissions table,#accessPermissions tr,#accessPermissions th,#accessPermissions td
+	{
+	border: 1px solid lightgrey;
+}
+
+.tableHeader {
+	margin-left: 10px;
+	color: black;
+	font-family: tahoma, Arial, Helvetica, sans-serif;
+	font-weight: bold;
+	font-size: 0.79em;
+}
+
+.errorresponse,.successresponse { /*	display: block;*/
+	font-family: tahoma, Arial, Helvetica, sans-serif;
+	font-size: 11px;
+	font-weight: bold;
+	text-align: left;
+}
+
+.errorresponse {
+	color: red;
+}
+
+.successresponse {
+	color: green;
+}
+
+.customDataTableBoxHead,.boxHead {
+	height: 24px;
+	background-color: #A28FB5;
+	-moz-border-top-left-radius: 3px;
+	-webkit-border-top-left-radius: 3px;
+	-khtml-border-top-left-radius: 3px;
+	border-bottom-top-radius: 3px;
+	-moz-border-top-right-radius: 3px;
+	-webkit-border-top-right-radius: 3px;
+	-khtml-border-top-right-radius: 3px;
+	border-top-right-radius: 3px;
+}
+
+.customDataTableHeading,.customDataTableHeading1,.heading {
+	float: left;
+	display: inline;
+	padding: 3px 0 0 5px;
+	text-align: left;
+	color: #FFFFFF;
+	font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	font-weight: bold;
+}
+
+.customDataTableHeadingborder,.headingborder {
+	float: left;
+	margin-left: 5px;
+	display: inline;
+	border: 1px solid #A28FB5;
+	width: 935px;
+	-moz-border-bottom-left-radius: 5px;
+	-webkit-border-bottom-left-radius: 5px;
+	-khtml-border-bottom-left-radius: 5px;
+	border-bottom-left-radius: 5px;
+	-moz-border-bottom-right-radius: 5px;
+	-webkit-border-bottom-right-radius: 5px;
+	-khtml-border-bottom-right-radius: 5px;
+	border-bottom-right-radius: 5px;
+	-moz-border-top-left-radius: 5px;
+	-webkit-border-top-left-radius: 5px;
+	-khtml-border-top-left-radius: 5px;
+	border-bottom-top-radius: 5px;
+	-moz-border-top-right-radius: 5px;
+	-webkit-border-top-right-radius: 5px;
+	-khtml-border-top-right-radius: 5px;
+	border-top-right-radius: 5px;
+}
+
+body {
+	background: #FFFFFF;
+	margin: 0px;
+	padding: 0px;
+	font-family: tahoma, Arial, Helvetica, sans-serif;
+	font-size: 13px;
+}
+
+/* HEADINGS   
+----------------------------------------------------------*/
+.login {
+	border-style: none;
+	font-family: inherit;
+	font-size: small;
+	color: #644583;
+	font-weight: bold;
+	background-color: #F0C375;
+}
+
+div.loginBox {
+	display: table-cell;
+	vertical-align: middle;
+	text-align: center;
+}
+
+.mainDiv {
+	border: 2px solid #D1D1D1;
+	width: 960px;
+	background-color: #FFFFFF;
+	margin: 20px auto 20px auto; /*border: medium groove #CFBEB3;*/
+}
+
+.content {
+	font-family: inherit;
+	font-size: small;
+	padding: 5px 5px 10px 10px;
+	margin: 0px;
+	background-color: #FFFFFF;
+	width: 940px;
+	float: left;
+	min-height: 420px;
+}
+
+.contentWide {
+	font-family: inherit;
+	font-size: small;
+	padding: 5px 5px 10px 10px;
+	margin: 0px;
+	background-color: #FFFFFF;
+	width: 930px;
+	float: left;
+	min-height: 420px;
+}
+
+.rightcol {
+	float: right;
+	width: 190px;
+	padding: 5px;
+	margin: 0px;
+	min-height: 420px;
+	background-color: #FFFFFF;
+}
+
+.banner {
+	padding: 0px;
+	margin: 0px;
+	float: none;
+	width: 100%;
+	position: relative;
+	height: 88px;
+}
+
+.menuBar {
+	width: 100%;
+	background-color: #644583;
+	font-family: inherit;
+	color: White;
+	font-size: medium;
+	font-weight: normal;
+	height: 24px;
+}
+
+.loginStatus {
+	padding: 0px 5px 0px 0px;
+	margin: 0px 0px 0px 0px;
+	font-size: medium;
+	font-family: inherit;
+	color: #FFFFFF;
+	height: 32px; /*height: 45px;*/
+}
+
+.mainMenu {
+	margin: 0px;
+	float: left;
+	vertical-align: bottom;
+}
+
+.menuCell {
+	float: left;
+	text-align: left;
+	width: 50%;
+	height: 32px;
+}
+
+.loginStatusCell {
+	padding: 0px; /*padding: 10px 0px 0px 0px;*/
+	text-align: right;
+	float: none;
+	vertical-align: middle;
+	width: 50%;
+	margin-left: 50%;
+	height: 32px;
+	color: #FFFFFF;
+	background-color: #644583;
+	line-height: 32px;
+}
+
+.footer {
+	width: 100%;
+	height: 20px;
+	background-color: #644583;
+	text-align: center;
+	color: #FFFFFF;
+	font-family: inherit;
+	font-size: small;
+}
+
+.logo {
+	position: relative;
+	width: 100%;
+	height: 88px;
+}
+
+.popupLabel {
+	width: 100px;
+	font-size: small;
+	font-family: inherit;
+	color:#644583;
+	font-weight: bold;
+}
+.clear {
+	clear: both;
+}
+
+.buttonIcons {
+	border-style: none;
+	float: right;
+	display: block;
+}
+
+.gridIcons {
+	border-width: 0px;
+	border-style: none;
+	float: right;
+	display: block;
+}
+
+.hiddenButton {
+	display: none;
+}
+
+.cnsButton {
+	border-style: outset;
+	border-width: medium;
+	border-color: #FFFFFF #C0C0C0 #C0C0C0 #FFFFFF;
+	background-color: #CFBEB3;
+	position: relative;
+	background-repeat: no-repeat;
+	white-space: nowrap;
+	display: block;
+	width: 200px;
+	height: 32px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+}
+
+.cnsButton a {
+	display: block;
+	color: #693F3F;
+	width: 200px;
+	height: 32px;
+	display: block;
+	float: left;
+	text-decoration: none;
+}
+
+.cnsButton a:hover {
+	background-color: #E1E1C8;
+}
+
+.cnsButton span {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	color: #693F3F;
+	padding-right: 0px;
+	padding-left: 10px;
+	left: 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	cursor: pointer;
+	padding-top: 0px;
+	position: absolute;
+	top: 9px;
+	width: 180px;
+	text-align: left;
+	font-weight: bold;
+}
+
+/* a mid-size cns button */
+.cnsButtonMed
+{
+	border-style: outset;
+	border-width: medium;
+	border-color: #FFFFFF #C0C0C0 #C0C0C0 #FFFFFF;
+	background-color: #CFBEB3;
+	position: relative;
+	background-repeat: no-repeat;
+	white-space: nowrap;
+	display: block;
+	width: 150px;
+	height: 32px;
+	margin: 0px;
+	padding: 0px;
+	color: #693F3F;
+	font-weight: bold;
+}
+
+.cnsButtonMed a {
+	display: block;
+	color: #693F3F;
+	width: 150px;
+	height: 32px;
+	display: block;
+	float: left;
+	text-decoration: none;
+}
+
+.cnsButtonMed a:hover {
+	background-color: #E1E1C8;
+}
+
+.cnsButtonMed span {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	color: #693F3F;
+	padding-right: 0px;
+	padding-left: 10px;
+	left: 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	cursor: pointer;
+	padding-top: 0px;
+	position: absolute;
+	top: 9px;
+	width: 130px;
+	text-align: left;
+	font-weight: bold;
+}
+
+/* a smaller cns button */
+.cnsButtonSmall,.button {
+	border-style: outset;
+	border-width: medium;
+	border-color: #FFFFFF #C0C0C0 #C0C0C0 #FFFFFF;
+	background-color: #CFBEB3;
+	position: relative;
+	background-repeat: no-repeat;
+	white-space: nowrap;
+	display: block;
+	width: 100px;
+	height: 32px;
+	margin: 0px 0px 0px 0px;
+	padding: 0px;
+	font-weight: bold;
+}
+
+.cnsButtonSmall,.button {
+	display: block;
+	color: #693F3F;
+	width: 100px;
+	height: 32px;
+	display: block;
+	float: left;
+	text-decoration: none;
+}
+
+.cnsButtonSmall:HOVER,.button:HOVER,.cnsButtonMed:HOVER {
+	background-color: #E1E1C8;
+	cursor: pointer;
+}
+
+.cnsButtonSmall span,.button span {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: small;
+	color: #693F3F;
+	padding-right: 0px;
+	padding-left: 10px;
+	left: 0px;
+	padding-bottom: 0px;
+	margin: 0px;
+	cursor: pointer;
+	padding-top: 0px;
+	position: absolute;
+	top: 9px;
+	width: 80px;
+	text-align: left;
+	font-weight: bold;
+}
+
+.copyright {
+	color: White;
+}

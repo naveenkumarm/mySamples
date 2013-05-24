@@ -1,0 +1,112 @@
+<?xml version="1.0"?>
+
+<project name="FrameWork" basedir="." default="staging.buildwar">
+    <property file="build.properties"/> 
+ 
+    <property name="name" value="Framework"/>
+	<property name="company.name" value="Sensiple Software Solutions Pvt Ltd"/>
+	<property name="project.name" value="Framework"/>
+   
+	
+	<path id="master.class.path"> 
+	        <fileset dir="${lib.dir}"> 
+	            <include name="**/*.jar"/> 
+	        </fileset> 
+     </path>   
+	
+	<target name="build.info">
+		<echo>Company:     ${company.name}</echo>
+		<echo>Project:     ${project.name}</echo>
+		<echo>JVM Version:     ${ant.java.version}</echo>
+	</target>
+	
+    <target name="build" description="Compile main source tree java files">
+        <mkdir dir="${build.dir}"/>
+        <echo>Compiling source code...</echo>
+        <javac destdir="${build.dir}" source="1.6" target="1.6" debug="true"
+               deprecation="false" optimize="false" failonerror="true"> 
+            <src path="${src.dir}"/>
+            <classpath refid="master.class.path"/>
+        </javac>
+    </target>
+
+	 <target name="clean"  description="Delete old war from dist">
+	 	<echo>Cleaning old WAR file...</echo>
+	 	<delete file="${app.dist}/qa/${name}.war"/>
+	 </target>
+
+    <target name="dev.buildwar" depends="build.info,clean,build" description="Building war for DEV environment">
+    	<echo>Copying DEV configuration files...</echo>
+    	<copy todir="${web.dir}/WEB-INF/classes" >
+    		<fileset file="${web.dir}/WEB-INF/config/**"/>
+    	</copy>
+    	<echo>Building WAR file...</echo>
+        <war destfile="${app.dist}/${name}.war"
+             webxml="${web.dir}/WEB-INF/web.xml">
+             <fileset dir="${web.dir}">
+				<include name="ckeditor/**"/>
+				<include name="datatable/**"/>
+				<include name="images/**"/>
+				<include name="jquery-ui/**"/>
+				<include name="scripts/**"/>
+				<include name="styles/**"/>
+             	<include name="WEB-INF/framework-servlet.xml"/>
+                <include name="WEB-INF/classes/**"/>
+            	<include name="WEB-INF/lib/**"/>
+            	<include name="WEB-INF/pages/**"/>
+            </fileset>
+        </war>
+	 	<echo>Build Completed. WAR file placed in "/dist" folder</echo>
+    </target>
+	
+    <target name="qa.buildwar" depends="clean,build" description="Building war for QA environment">
+    	<echo>Copying QA configuration files...</echo>
+    	<copy todir="${web.dir}/WEB-INF/classes"> 
+    		<fileset file="${web.dir}/WEB-INF/config/*.xml"/>
+     		<fileset file="${web.dir}/WEB-INF/config/messages.properties"/>
+       	</copy>
+    	<echo>Building WAR file...</echo>
+        <war destfile="${app.dist}/${name}.war"
+             webxml="${web.dir}/WEB-INF/web.xml">
+             <fileset dir="${web.dir}">
+				<include name="ckeditor/**"/>
+				<include name="datatable/**"/>
+				<include name="images/**"/>
+				<include name="jquery-ui/**"/>
+				<include name="scripts/**"/>
+				<include name="styles/**"/>
+             	<include name="WEB-INF/framework-servlet.xml"/>
+                <include name="WEB-INF/classes/**"/>
+            	<include name="WEB-INF/lib/**"/>
+            	<include name="WEB-INF/pages/**"/>
+            </fileset>
+        </war>
+		<echo>Build Completed. WAR file placed in "/dist" folder</echo>
+    </target>
+	
+    <target name="staging.buildwar" depends="clean,build" description="Building war for STAGING environment">
+    	<echo>Copying STAGING configuration files...</echo>
+    	<copy todir="${web.dir}/WEB-INF/classes" >
+    		<fileset file="${web.dir}/WEB-INF/config/*.xml"/>
+    		<fileset file="${web.dir}/WEB-INF/config/menu.properties"/>
+    		<fileset file="${web.dir}/WEB-INF/config/messages.properties"/>
+      	</copy>
+		<echo>Building WAR file...</echo>        
+		<war destfile="${app.dist}/${name}.war"
+             webxml="${web.dir}/WEB-INF/web.xml">        
+			<fileset dir="${web.dir}">
+				<include name="ckeditor/**"/>
+				<include name="datatable/**"/>
+				<include name="images/**"/>
+				<include name="jquery-ui/**"/>
+				<include name="scripts/**"/>
+				<include name="styles/**"/>
+				<include name="WEB-INF/framework-servlet.xml"/>
+                <include name="WEB-INF/classes/**"/>
+            	<include name="WEB-INF/lib/**"/>
+            	<include name="WEB-INF/pages/**"/>
+            </fileset>
+        </war>
+		<echo>Build Completed. WAR file placed in "/dist" folder</echo>
+    </target>
+</project>

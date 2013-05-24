@@ -1,0 +1,40 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 Oct, 2012 11:47:06 AM by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="com.epro.framework.model.Roles" table="Roles" schema="dbo">
+        <id name="roleId" type="int">
+            <column name="RoleId" />
+            <generator class="identity" />
+        </id>
+        
+        <property name="roleName" type="string">
+            <column name="RoleName" length="50" not-null="true" />
+        </property>
+        
+		<property name="organization" type="string">
+            <column name="Organization" length="50" not-null="true" />
+        </property>
+		 
+		<property name="status" type="boolean">
+            <column name="Status" not-null="true" />
+        </property>
+        
+		<property name="isDeleted" type="boolean">
+            <column name="isDeleted"  not-null="true" />
+        </property>
+        
+        <set name="roleAccessPermissionses" cascade="all-delete-orphan"  inverse="true" lazy="false" table="RoleAccessPermission" fetch="select">
+            <key>
+                <column name="RoleId" not-null="true" />
+            </key>
+            <one-to-many class="com.epro.framework.model.RoleAccessPermission" />
+        </set>
+        
+        <property name="clientId" type="long">
+            <column name="ClientId"  not-null="true" />
+        </property>
+        
+   </class>
+</hibernate-mapping>

@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 Oct, 2012 11:47:06 AM by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="com.epro.framework.model.VoiceBioLog" table="Table1" schema="dbo">
+    
+         <id name="logId" type="int">
+            <column name=LogId />
+            <generator class="identity" />
+        </id>
+        
+         <property name="userIdentity" type="int">
+            <column name="UserIdentity"  not-null="true" />
+        </property>
+        
+        <property name="clientId" type="long">
+            <column name="ClientId"  not-null="true" />
+        </property>
+        
+      <property name="timeStamp" type="timestamp">
+            <column name="tTimeStamp"  not-null="true"/>
+        </property>
+	
+	 <property name="status" type="String" length="100">
+            <column name="status"  not-null="true" />
+        </property>
+        
+         <property name="voiceBioMetricType" type="String" length="50">
+            <column name="VoiceBioMetricType"  not-null="true" />
+        </property>
+        
+           <property name="score" type="int">
+            <column name="Score"  not-null="true" />
+        </property>
+	
+        
+   </class>
+</hibernate-mapping>

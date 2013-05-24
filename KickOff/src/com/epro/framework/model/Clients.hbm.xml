@@ -1,0 +1,64 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 13 Oct, 2012 11:47:06 AM by Hibernate Tools 3.2.4.GA -->
+<hibernate-mapping>
+    <class name="com.epro.framework.model.Clients" table="Clients" schema="dbo">
+        <id name="clientId" type="long">
+            <column name="ClientId" />
+            <generator class="identity" />
+        </id>
+        <property name="clientName" type="string">
+            <column name="ClientName" length="50" not-null="true" />
+        </property>
+        <property name="description" type="string">
+            <column name="Description" length="150" />
+        </property>
+        <property name="businessType" type="string">
+            <column name="BusinessType" length="30" not-null="true" />
+        </property>
+        <property name="address" type="string">
+            <column name="Address" length="100" not-null="true" />
+        </property>
+        <property name="city" type="string">
+            <column name="City" length="20" not-null="true"/>
+        </property>
+        <property name="state" type="string">
+            <column name="State" length="30" not-null="true"/>
+        </property>
+        <property name="zip" type="string">
+            <column name="Zip" length="10" not-null="true"/>
+        </property>
+        <property name="country" type="string">
+            <column name="Country" length="50" not-null="true"/>
+        </property>
+          <property name="status" type="boolean">
+            <column name="Status" not-null="true"/>            
+        </property>
+        <property name="contactPerson" type="string">
+            <column name="ContactPerson" length="30" not-null="true" />
+        </property>
+         <property name="workPhone" type="string">
+            <column name="WorkPhone" length="15" not-null="true"/>
+        </property>
+         <property name="faxNo" type="string">
+            <column name="FaxNo" length="15" />
+        </property>
+         <property name="mobileNumber" type="string">
+            <column name="MobileNumber" length="20" not-null="true" />
+        </property>
+         <property name="emailId" type="string">
+            <column name="EmailId" length="100" not-null="true"/>
+        </property>
+          <property name="modifiedDate" type="timestamp">
+            <column name="ModifiedDate" length="23" />
+        </property>
+        <property name="isDeleted" type="boolean">
+            <column name="IsDeleted" />
+        </property>
+        <property name="logoPath" type="string">
+            <column name="LogoPath" length="150" />
+        </property>
+         
+    </class>
+</hibernate-mapping>

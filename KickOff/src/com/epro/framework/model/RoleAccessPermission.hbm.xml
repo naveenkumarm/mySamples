@@ -1,0 +1,45 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated Oct 19, 2012 1:09:59 PM by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+	<class name="com.epro.framework.model.RoleAccessPermission" table="RoleAccessPermission" schema="dbo">
+		<id name="permissionId" type="long">
+			<column name="PermissionId" />
+			<generator class="identity" />
+		</id>
+		
+ 		<many-to-one name="roles" lazy="false" class="com.epro.framework.model.Roles" fetch="select">
+            <column name="RoleId" not-null="true" />
+        </many-to-one>
+		 
+		<property name="menuId" type="long">
+			<column name="MenuId" not-null="true" />
+		</property>
+		
+		<property name="subMenuId" type="long">
+			<column name="SubMenuId" not-null="true" />
+		</property>
+		
+		<property name="isViewEnabled" type="boolean">
+			<column name="IsViewEnabled" not-null="true" />
+		</property>
+		
+		<property name="isCreateEnabled" type="boolean">
+			<column name="IsCreateEnabled" not-null="true" />
+		</property>
+		
+		<property name="isEditEnabled" type="boolean">
+			<column name="IsEditEnabled" not-null="true" />
+		</property>
+		
+		<property name="isDeleteEnabled" type="boolean">
+			<column name="IsDeleteEnabled" not-null="true" />
+		</property>
+		
+		<property name="modifiedDate" type="timestamp">
+			<column name="ModifiedDate" length="23" not-null="true" />
+		</property>
+		
+	</class>
+</hibernate-mapping>
