@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xmlns:oxm="http://www.springframework.org/schema/oxm"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+       http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context-2.5.xsd
+       http://www.springframework.org/schema/oxm http://www.springframework.org/schema/oxm/spring-oxm-1.5.xsd">
+
+	<!--  annotation-config element required to pick up @PostContruct annotated methods -->
+	<context:annotation-config/>
+
+	<bean id="webServiceProperties"
+        class="org.springframework.beans.factory.config.PropertyPlaceholderConfigurer">
+		<property name="location"
+            value="classpath:service/local.service.properties" />
+		<property name="placeholderPrefix" value="${webServiceProperties." />
+		<property name="placeholderSuffix" value="}" />
+	</bean>
+
+	<bean id="messageFactory" class="org.springframework.ws.soap.saaj.SaajSoapMessageFactory"/>
+
+	<bean id="emsServiceTemplate" class="org.springframework.ws.client.core.WebServiceTemplate">
+		<!-- TODO Un-comment the constructor-org code after updating the oxm:jibx-marshaller property. -->
+		<constructor-arg ref="messageFactory"/>
+		<property name="defaultUri" value="${webServiceProperties.ems.service.endpoint}"/>
+		<property name="marshaller" ref="marshallerEMS"/>
+		<property name="unmarshaller" ref="marshallerEMS"/>
+	</bean>
+
+
+	<oxm:jibx-marshaller id="marshallerEMS" target-class="com.epro.schema.LoginRequest"/>
+
+	<bean id="authenticationAdapter" class="com.epro.adapter.impl.AuthenticationAdapterImpl">
+		<constructor-arg ref="emsServiceTemplate"/>
+	</bean>
+	<bean id="customerAdapter" class="com.epro.adapter.impl.CustomerAdapterImpl">
+		<constructor-arg ref="emsServiceTemplate"/>
+	</bean>
+	<bean id="timeSheetAdapter" class="com.epro.adapter.impl.TimeSheetAdapterImpl">
+		<constructor-arg ref="emsServiceTemplate"/>
+	</bean>
+	<bean id="projectAdapter" class="com.epro.adapter.impl.ProjectAdapterImpl">
+		<constructor-arg ref="emsServiceTemplate"/>
+	</bean>
+	<bean id="DashboardAdapter" class="com.epro.adapter.impl.DashboardAdapterImpl">
+		<constructor-arg ref="emsServiceTemplate"/>
+	</bean>
+
+</beans>

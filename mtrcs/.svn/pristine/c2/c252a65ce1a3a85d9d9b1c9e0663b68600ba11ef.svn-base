@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xmlns:security="http://www.springframework.org/schema/security"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+       http://www.springframework.org/schema/beans/spring-beans-3.1.xsd
+       http://www.springframework.org/schema/security  
+       http://www.springframework.org/schema/security/spring-security-3.1.xsd">
+
+	<!-- This is where we configure Spring-Security -->
+	<security:http auto-config="false" use-expressions="true"
+		access-denied-page="/ems/login/accessDenied" entry-point-ref="authenticationEntryPoint">
+		
+		<security:intercept-url pattern="/ems/timesheet/add" access="hasAnyRole('ROLE_DEVELOPER','ROLE_MANAGER','ROLE_SR.MANAGEMENT','ROLE_ADMIN/PMO')" />
+		<security:intercept-url pattern="/ems/timesheet/onBehalf" access="hasAnyRole('ROLE_MANAGER')" />
+		<security:intercept-url pattern="/ems/timesheet/view" access="hasAnyRole('ROLE_DEVELOPER','ROLE_MANAGER','ROLE_SR.MANAGEMENT','ROLE_ADMIN/PMO')" />
+		
+		<security:intercept-url pattern="/ems/customer/view" access="hasAnyRole('ROLE_SR.MANAGEMENT','ROLE_ADMIN/PMO')" />
+		
+		<security:intercept-url pattern="/ems/dashboard/view" access="hasAnyRole('ROLE_SR.MANAGEMENT')" />
+		
+		<security:intercept-url pattern="/ems/project/addProject" access="hasAnyRole('ROLE_ADMIN/PMO')" />
+		<security:intercept-url pattern="/ems/project/addNewResource" access="hasAnyRole('ROLE_ADMIN/PMO')" />
+		<security:intercept-url pattern="/ems/project/viewProjectList" access="hasAnyRole('ROLE_SR.MANAGEMENT','ROLE_MANAGER','ROLE_ADMIN/PMO')" />
+		<security:intercept-url pattern="/ems/project/projectApproval" access="hasAnyRole('ROLE_SR.MANAGEMENT')" />
+		 
+		
+		<security:logout logout-url="/ems/login/logout" invalidate-session="true" logout-success-url="/ems/login/view?reason=logout" />
+		<security:session-management invalid-session-url="/ems/login/view?reason=logout">
+			<security:concurrency-control max-sessions="5" error-if-maximum-exceeded="false" />
+		</security:session-management>
+
+		<!-- filters -->
+		<security:custom-filter ref="authenticationFilter" position="FORM_LOGIN_FILTER" />
+	</security:http>
+	<!-- Custom filter to deny unwanted users even though registered -->
+	<!-- <bean id="blacklistFilter" class="org.krams.tutorial.filter.BlacklistFilter" 
+		/> -->
+
+	<!-- Custom filter for username and password. The real customization is 
+		done in the customAthenticationManager -->
+	<bean id="authenticationFilter" class="org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter" p:authenticationManager-ref="customAuthenticationManager"
+		p:authenticationFailureHandler-ref="customAuthenticationFailureHandler" p:authenticationSuccessHandler-ref="customAuthenticationSuccessHandler" />
+
+	<!-- Custom authentication manager. In order to authenticate, username and 
+		password must not be the same -->
+	<bean id="customAuthenticationManager" class="com.epro.service.CustumUserDetailService" />
+
+	<!-- We just actually need to set the default failure url here -->
+	<bean id="customAuthenticationFailureHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler"
+		p:defaultFailureUrl="/ems/login/view?reason=error" />
+
+	<!-- We just actually need to set the default target url here -->
+	<bean id="customAuthenticationSuccessHandler" class="org.springframework.security.web.authentication.SimpleUrlAuthenticationSuccessHandler"
+		p:defaultTargetUrl="/ems/login/validateUser" />
+
+	<!-- The AuthenticationEntryPoint is responsible for redirecting the user 
+		to a particular page, like a login page, whenever the server sends back a 
+		response requiring authentication -->
+	<!-- See Spring-Security Reference 5.4.1 for more info -->
+	<bean id="authenticationEntryPoint" class="org.springframework.security.web.authentication.LoginUrlAuthenticationEntryPoint" p:loginFormUrl="/ems/login/view" />
+
+	<security:authentication-manager />
+</beans>

@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+
+<tiles-definitions>
+   
+	  <definition name="base.definition" template="/WEB-INF/tiles/baseLayout.jsp">
+	      <put-attribute name="title"  value="Template"/>
+	      <put-attribute name="header" value="/WEB-INF/tiles/header.jsp"/>
+	      <put-attribute name="body"   value=""/>
+	      <put-attribute name="footer"   value="/WEB-INF/tiles/footer.jsp"/>
+	  </definition>
+ 
+  <definition name="base.plaindefinition" template="/WEB-INF/tiles/baseLayout.jsp">
+	      <put-attribute name="title"  value="Template"/>
+	      <put-attribute name="header" value="/WEB-INF/tiles/plainHeader.jsp"/>
+	      <put-attribute name="body"   value=""/>
+	      <put-attribute name="footer"   value="/WEB-INF/tiles/footer.jsp"/>
+	  </definition>
+ 
+  <definition name="login" extends="base.plaindefinition">
+        <put-attribute name="title" value="Login"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/view/login.jsp"></put-attribute>
+    </definition>   
+   
+    <definition name="patientView" extends="base.definition">
+        <put-attribute name="title" value="Dashboard"></put-attribute>
+        <put-attribute name="body" value="/WEB-INF/view/patientView.jsp"></put-attribute>
+    </definition>
+    
+</tiles-definitions>

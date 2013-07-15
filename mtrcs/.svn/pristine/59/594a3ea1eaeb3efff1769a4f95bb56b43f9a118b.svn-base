@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<project basedir="." default="build-jibx-all" name="ems-web">
+    <property name="project-build-dir" value="${basedir}/../build" />
+    <property name="project-java-source-dir" value="${basedir}/../src/main/java"/>
+    <property name="project-resources-source-dir" value="${basedir}/../src/main/resources"/>
+    <property name="project-classes-dir" value="${project-build-dir}/classes"/>
+	<property name="project-lib-dir" value="${basedir}/../WebContent/WEB-INF/lib" />
+	<property environment="env" />
+
+    <property name="debuglevel" value="source,lines,vars" />
+    <property name="target" value="1.6" />
+    <property name="source" value="1.6" />
+
+    <property name="thirdparty-repository-dir" value="${basedir}/../../ems-jar-repository"/>
+	<property name="bea-10.3.2-base-dir" value="C:/bea10.3.2"/>
+	<property name="package-lib-dir" value="${basedir}/../WebContent/WEB-INF/lib"/>
+
+	<property name="ems-schema-base-dir" value="${basedir}/../../ems-schema" />
+	
+	
+    <path id="project.classpath">
+        <pathelement location="${project-classes-dir}" />     
+        <pathelement location="${thirdparty-repository-dir}/org/springframework/dist/combined/2.5.6/spring.jar" />
+        <pathelement location="${thirdparty-repository-dir}/org/springframework/org.springframework.test/2.5.6/spring-test.jar" />
+        <pathelement location="${thirdparty-repository-dir}/org/springframework/ws/spring-ws/1.5.8/spring-ws-1.5.8-all.jar" />
+        <pathelement location="${thirdparty-repository-dir}/org/apache/commons-logging/1.1/commons-logging-1.1.jar" />
+        <pathelement location="${thirdparty-repository-dir}/org/apache/log4j/1.2.14/log4j-1.2.14.jar"/>
+
+        <path refid="sub-projects-classpath"/>
+    </path>
+    
+    <path id="sub-projects-classpath">
+    	<fileset dir="${ems-schema-base-dir}" includes="EMS-schema.jar" />
+    </path>
+	
+	<target depends="clean" name="init">
+        <mkdir dir="${project-classes-dir}"/>
+    </target>
+    
+	<target name="clean">
+		<delete includeemptydirs="true">
+            <fileset dir="${project-classes-dir}" includes="**/*"/>
+        </delete>
+    </target>
+
+	<target depends="build-subprojects, copy-subproject-jars, build" name="build-all"/>
+    <target depends="build-subprojects, copy-subproject-jars" name="build-jibx-all"/>
+	<target depends="build-project" name="build"/>
+	
+
+	<target name="build-subprojects">
+		<!-- Important - make sure the order of building sub-projects is correct -->
+		<ant antfile="${ems-schema-base-dir}/build/build.xml" inheritAll="false" target="build"/>
+	</target>
+	
+
+
+	<target name="copy-subproject-jars">
+        <copy todir="${project-lib-dir}" verbose="true">
+            <fileset dir="${ems-schema-base-dir}/">
+                <include name="EMS-schema.jar"/>
+            </fileset>
+        </copy>
+    </target>
+
+
+   	<target depends="init" name="build-version-info">
+   	    <property file="build.properties" /> 
+	    <propertyfile file="${project-classes-dir}/build.properties" comment="EMS-Web Build Number">
+		  <entry  key="build.version-number" value="${build.version-number}" />
+		  <entry  key="build.build-number" value="${build.build-number}" />
+		  <entry  key="build.timestamp" type="date" value="now" pattern="yyyyMMddHHmmss" />
+		  <entry  key="build.build-date" type="date" value="now" pattern="(MM/dd/yyyy HH:mm z)" />
+	    </propertyfile>    
+    </target>
+
+	<target depends="init, build-version-info" name="build-project">
+		<echo message="${ant.project.name}: ${ant.file}" />
+		<!-- Compile Main sources -->
+		<javac debug="true" debuglevel="${debuglevel}" destdir="${project-classes-dir}" source="${source}" target="${target}">
+            <src path="${project-java-source-dir}"/>
+            <classpath refid="project.classpath"/>
+		</javac>
+        <echo message="Copying resources"/>
+        <copy todir="${project-classes-dir}">
+            <fileset dir="${project-resources-source-dir}">
+                <exclude name="**/*.java"/>
+            </fileset>
+        </copy>
+	</target>
+</project>

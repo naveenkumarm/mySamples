@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!--
+Had to extract the Jawr into separate config for use by build process to generate CDN bundles.
+For the build had to explicitly set the props args as it was not able to find the variables on the classpath.
+This file is not used by the app, only by the CC build script.
+-->
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:context="http://www.springframework.org/schema/context"
+    xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context-2.5.xsd">
+	
+	<!-- Jawr controller setup-->
+	<!-- Base Jawr config -->
+		<bean abstract="true" id="jawrBase"  class="net.jawr.web.servlet.JawrSpringController" >
+	        <!-- This must match the servlet-mapping to which the spring servlet is bound -->
+	        <property name="mapping" value="/ems/"/>
+	        <property name="configLocation" value="/jawr/jawr.properties" />
+	        <property name="configuration">
+	        <props>
+                <prop key="jawr.debug.on">${webServiceProperties.jawr.debug.on}</prop>
+                <prop key="jawr.url.contextpath.override">${webServiceProperties.jawr.url.contextpath.override}</prop>
+                <prop key="jawr.url.contextpath.ssl.override">${webServiceProperties.jawr.url.contextpath.ssl.override}</prop>
+	       </props>
+	    </property>
+	</bean>
+	
+	<!-- JS controller -->
+	<bean id="jawrJsController" parent="jawrBase" />
+
+	<!-- Image controller -->
+	<bean id="jawrImgController"  parent="jawrBase" depends-on="jawrJsController">
+		<property name="type" value="img" />
+	</bean>
+	  
+	<!-- CSS controller -->
+	<bean id="jawrCSSController"  parent="jawrBase" depends-on="jawrImgController">
+		<property name="type" value="css" />
+	</bean>
+	
+	<bean id="urlMapping"
+          class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+         <property name="mappings">
+          <props>
+	          <prop key="/**/*.js">jawrJsController</prop>
+	          <prop key="/**/*.jpg">jawrImgController</prop>
+	          <prop key="/**/*.png">jawrImgController</prop>
+	          <prop key="/**/*.gif">jawrImgController</prop>
+	          <prop key="/**/*.css">jawrCSSController</prop>
+          </props>
+         </property>
+	</bean>
+</beans>

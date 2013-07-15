@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+
+	<display-name>ems-web</display-name>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+
+	<!-- loading configuration files-->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>
+			classpath:com/epro/applicationContext-service-adapter.xml
+			/WEB-INF/config/spring/jawr-cdn-config.xml
+			/WEB-INF/config/spring/security-context.xml
+        </param-value>
+	</context-param>
+
+	<!-- listener for the context -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+
+	<!--loading log4j config file in the context-->
+	<context-param>
+		<param-name>log4jConfigLocation</param-name>
+		<param-value>classpath:log4j/log4j.xml</param-value>
+	</context-param>
+	<context-param>
+		<param-name>log4jExposeWebAppRoot</param-name>
+		<param-value>false</param-value>
+	</context-param>
+	<!--listener for the log4j-->
+	<listener>
+		<display-name>log4jConfigListener</display-name>
+		<listener-class>org.springframework.web.util.Log4jConfigListener</listener-class>
+	</listener>
+
+	<!--dispatcher servlet configuration -->
+	<servlet>
+		<servlet-name>mvc</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<init-param>
+			<param-name>contextConfigLocation</param-name>
+			<param-value>/WEB-INF/config/spring/mvc-servlet.xml</param-value>
+		</init-param>
+	</servlet>
+	<!--Mapping to dispatcher servlet-->
+	<servlet-mapping>
+		<servlet-name>mvc</servlet-name>
+		<url-pattern>/ems/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- config for session init filter (user defined)-->
+	<filter>
+		<filter-name>sessionInitFilter</filter-name>
+		<filter-class>com.epro.utils.SessionInitFilter</filter-class>
+	</filter>
+	<!-- URL mapping for session init filter -->
+	<filter-mapping>
+		<filter-name>sessionInitFilter</filter-name>
+		<url-pattern>/ems/*</url-pattern>
+	</filter-mapping>
+
+	<!-- config for spring security filter-->
+	<filter>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+	</filter>
+	<!-- URL mapping for spring security filter -->
+	<filter-mapping>
+		<filter-name>springSecurityFilterChain</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- Handling the 403 Htttp error to display access Denied page  -->
+	<error-page>
+		<error-code>403</error-code>
+		<location>/WEB-INF/jsp/accessDenied.jsp</location>
+	</error-page>
+
+	<!-- Handling the 404 Htttp error to display file not found page  -->
+	<error-page>
+		<error-code>404</error-code>
+		<location>/WEB-INF/jsp/fileNotFound.jsp</location>
+	</error-page>
+	
+	<!-- Handling the 500 Htttp error to display internal server error page  -->
+	<error-page>
+		<error-code>500</error-code>
+		<location>/WEB-INF/jsp/commonError.jsp</location>
+	</error-page>
+
+	<!-- Http session configuration Set session timeout value in minutes-->
+	<session-config>
+		<session-timeout>120</session-timeout>
+	</session-config>
+
+</web-app>

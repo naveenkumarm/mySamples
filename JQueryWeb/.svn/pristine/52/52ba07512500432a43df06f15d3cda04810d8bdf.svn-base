@@ -1,0 +1,81 @@
+@charset "utf-8";
+body, html	{margin:0;background-color:#CCCCCC;height:100%;width:100%;}
+* 			{margin:0;padding:0;}
+/*   Typography
+=====================================*/
+#content	{font-family: Verdana, Helvetica, sans-serif ; font-size:12px; line-height:180%; color:#000;}
+#footer	 	{font-family: Verdana, Helvetica, sans-serif ; font-size:10px; line-height:180%; color:#666666;text-align:center;  }
+.pass, .user{font-family: Verdana, Helvetica, sans-serif ; font-size:10px; color:#666666;text-align:left;}
+/*Main layout element
+=====================================*/
+#shell 		{margin:0;padding:0;height:100%;background-image:url(../images/bg.jpg);background-repeat:repeat-x;background-position:center top; }
+/**Container
+=====================================*/
+.header 	{margin:0 auto;height:17%;width:100%;position:relative;}
+.content 	{margin:0 auto;height:73%;width:100%;position:relative;}
+.loginuser 	{margin:0 auto; width:10%;height:258px;margin-top:102px;margin-bottom:164px; background-image:url(../images/loginuser.jpg);background-repeat:no-repeat; position:relative ;}
+/**Callouts
+=====================================*/
+.logo 		{position:absolute;top:0px;left:0px;}
+.topimage	{position:absolute;top:0px;right:0px;}
+.login 		{position:absolute;top:183px;left:458px;}
+.name		{width:177px;height:19px;position:absolute;top:89px;left:325px;}
+.pass		{width:176px;height:19px;position:absolute;top:139px;left:325px;}
+
+.login_template	{margin:0 auto; width:814px;height:258px;margin-top:102px;margin-bottom:164px;background-repeat:no-repeat; position:relative ;}
+
+
+/**Footer
+=====================================*/
+#footer 	{width:100%px;height:42px;background-image:url(../images/footer.jpg);background-repeat:repeat-x;}
+
+
+/*26-04-2011*/
+
+.Forgotpassword {position:absolute; left: 328px; top: 169px}
+
+.validationtext {font-family: Arial, Helvetica, sans-serif ; font-size:15px; color:#FF0000; font-weight:bold; position:absolute;left: 580px; top: 142px;  }
+
+.validationMsg {font-family: Arial, Helvetica, sans-serif ; font-size:15px; color:#FF0000; font-weight:bold;position:absolute;left: 350px;}
+
+.loginuserpage 	{margin:0 auto; width:814px;margin-top:102px;margin-bottom:164px; position:relative;}
+
+.username{
+	position:absolute;
+	top:70px;
+	right:45px;	
+	
+}
+.logout{
+	position:absolute;
+	top:70px;
+	left:45px;	
+	
+}
+/* "Winter Blues" CSS theme for CSS Table Gallery (http://icant.co.uk/csstablegallery/) by Gunta Klavina (http://www.klavina.com) */
+
+table {font: 85% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;padding: 0; margin: 0; color: #333; background: #F3F5F7;}
+
+table a {color: #3A4856; text-decoration: none; border-bottom: 1px solid #C6C8CB;}  
+
+table a:visited {color: #777;}
+
+table a:hover {color: #000;}  
+
+table caption {text-align: left; text-transform: uppercase;  padding-bottom: 10px; font: 200% "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif;}
+
+table thead th {background: #3A4856; padding: 15px 10px; color: #fff; text-align: left; font-weight: normal;}
+
+table tbody, table thead {border-left: 1px solid #EAECEE; border-right: 1px solid #EAECEE;}
+
+table tbody {border-bottom: 1px solid #EAECEE;}
+                      
+table tbody td, table tbody th {padding: 10px; text-align: left;}
+
+table tbody tr {background: #F3F5F7;}
+
+table tbody tr.odd {background: #F0F2F4;}
+
+table tbody  tr:hover {background: #EAECEE; color: #111;}
+
+table tfoot td, table tfoot th, table tfoot tr {text-align: left; font: 120%  "Lucida Grande", "Lucida Sans Unicode", "Trebuchet MS", sans-serif; text-transform: uppercase; background: #fff; padding: 10px;}

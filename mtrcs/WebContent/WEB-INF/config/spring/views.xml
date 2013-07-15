@@ -1,0 +1,145 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+    "-//Apache Software Foundation//DTD Tiles Configuration 2.0//EN"
+    "http://tiles.apache.org/dtds/tiles-config_2_0.dtd">
+    
+<tiles-definitions> 
+
+    <!-- Login View -->
+    <definition name="loginView" template="/WEB-INF/jsp/login.jsp"/>
+
+
+	<!--  Used to return Patient Search Datatable tbody and TR tags alone -->
+	 <definition name="standardLayout" template="/WEB-INF/jsp/layout/landingPage.jsp" >
+		<put-attribute name="title" value="Title not specified in views.xml" />
+        <put-attribute name="header" value="/WEB-INF/jsp/layout/header.jsp" />
+        <put-attribute name="leftPanel" value="/WEB-INF/jsp/layout/leftPanel.jsp" />
+        <put-attribute name="footer" value="/WEB-INF/jsp/layout/footer.jsp" />
+        <put-attribute name="body" value="/WEB-INF/jsp/layout/blank.jsp" />       
+    </definition>
+	
+	<definition name="landingView" extends="standardLayout">
+        <put-attribute name="title" value="Landing View" />
+    </definition>
+	
+	<definition name="accessDenied" extends="standardLayout">
+        <put-attribute name="title" value="AccessDenied" />
+        <put-attribute name="body" value="/WEB-INF/jsp/accessDenied.jsp" /> 
+    </definition>
+	
+	<definition name="changePassword" extends="standardLayout">
+        <put-attribute name="title" value="ChangePassword" />
+        <put-attribute name="body" value="/WEB-INF/jsp/changePassword.jsp" /> 
+    </definition>
+    
+    <definition name="createUser" extends="standardLayout">
+        <put-attribute name="title" value="User Information" />
+        <put-attribute name="body" value="/WEB-INF/jsp/createUser.jsp" /> 
+    </definition>
+    
+	<!-- customer details -->
+	<definition name="getCustomerInfo" extends="standardLayout">
+        <put-attribute name="title" value="GetCustomerInfo" />
+        <put-attribute name="body" value="/WEB-INF/jsp/customer/CustomerList.jsp" /> 
+    </definition>
+    
+    <definition name="saveCustomerInfo" extends="standardLayout">
+        <put-attribute name="title" value="SaveCustomerInfo" />
+        <put-attribute name="body" value="/WEB-INF/jsp/customer/CustomerAdd.jsp" /> 
+    </definition>
+    
+    <definition name="editCustomerInfo" extends="standardLayout">
+        <put-attribute name="title" value="EditCustomerInfo" />
+        <put-attribute name="body" value="/WEB-INF/jsp/customer/CustomerEdit.jsp" />  
+    </definition>
+    
+    <definition name="customerView" extends="standardLayout">
+  		<put-attribute name="title" value="CustomerView" />
+        <put-attribute name="body" value="/WEB-INF/jsp/customer/CustomerInfo.jsp" />  
+    </definition>
+	<!--  PROJECT VIEWS  -->
+    <definition name="addProject" extends="standardLayout">
+        <put-attribute name="title" value="Add Project" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/addProject.jsp" />
+    </definition>
+    
+    <definition name="projectInfo" extends="standardLayout">
+        <put-attribute name="title" value="Project Information" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/projectInfo.jsp" />
+    </definition>
+    <definition name="addResource" extends="standardLayout">
+        <put-attribute name="title" value="Add Resource" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/addResource.jsp" />
+    </definition>
+    
+	<definition name="viewProject" extends="standardLayout">
+        <put-attribute name="title" value="View Project" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/viewProject.jsp" />
+    </definition>
+    <definition name="projectDetails" extends="standardLayout">
+        <put-attribute name="title" value="ProjectDetails" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/projectDetails.jsp" />
+	</definition>
+	 <definition name="projectApproval" extends="standardLayout">
+        <put-attribute name="title" value="Project Approval" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/projectApproval.jsp" />
+	</definition>
+	<definition name="createGroupView" extends="standardLayout">
+        <put-attribute name="title" value="Create Group" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/createGroup.jsp" />
+	</definition>
+	<definition name="listGroupView" extends="standardLayout">
+        <put-attribute name="title" value="List Group" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/listGroup.jsp" />
+	</definition>
+	<definition name="editGroupView" extends="standardLayout">
+        <put-attribute name="title" value="Edit Group" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/createGroup.jsp" />
+	</definition>
+	<definition name="showGroupView" extends="standardLayout">
+        <put-attribute name="title" value="View Group" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/createGroup.jsp" />
+	</definition>
+	
+   <!--  -->
+    <definition name="addTimeSheet" extends="standardLayout">
+        <put-attribute name="title" value="Add/Edit Time Sheet" />
+        <put-attribute name="body" value="/WEB-INF/jsp/timesheet/addTimeSheet.jsp" />  
+    </definition>
+    
+     <definition name="onBehalfTimeSheet" extends="standardLayout">
+        <put-attribute name="title" value="Add Time Sheet OnBehalf" />
+        <put-attribute name="body" value="/WEB-INF/jsp/timesheet/onBehalfTimeSheet.jsp" />  
+    </definition>
+    
+     <definition name="viewTimeSheet" extends="standardLayout">
+        <put-attribute name="title" value="View Time Sheet" />
+        <put-attribute name="body" value="/WEB-INF/jsp/timesheet/viewTimeSheet.jsp" />  
+    </definition>
+    
+    <!--  REPORT VIEWS  -->
+    <definition name="projectWiseReports" extends="standardLayout">
+        <put-attribute name="title" value="Project Wise Reports" />
+        <put-attribute name="body" value="/WEB-INF/jsp/reports/projectWiseReports.jsp" />  
+    </definition>
+    <definition name="employeeWiseReports" extends="standardLayout">
+        <put-attribute name="title" value="Resource Wise Reports" />
+        <put-attribute name="body" value="/WEB-INF/jsp/reports/employeeWiseReports.jsp" />  
+    </definition>
+     <definition name="groupWiseReports" extends="standardLayout">
+        <put-attribute name="title" value="Group Wise Reports" />
+        <put-attribute name="body" value="/WEB-INF/jsp/reports/groupWiseReports.jsp" />  
+    </definition>
+    
+    <!-- Dashboard -->
+    <definition name="dashboardView" extends="standardLayout">
+        <put-attribute name="title" value="Dashboard" />
+        <put-attribute name="body" value="/WEB-INF/jsp/dashboard/dashboardInfo.jsp" />  
+    </definition>
+    
+    <!-- Issue Register -->
+    <definition name="issueRegisterView" extends="standardLayout">
+        <put-attribute name="title" value="Issue Register" />
+        <put-attribute name="body" value="/WEB-INF/jsp/project/issueRegisterInfo.jsp" />  
+    </definition>
+</tiles-definitions>
